@@ -1,0 +1,99 @@
+{
+  "name": "@web/rollup-plugin-copy",
+  "version": "0.5.1",
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "Rollup plugin which copies asset files while retaining the relative folder structure.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/modernweb-dev/web.git",
+    "directory": "packages/rollup-plugin-copy"
+  },
+  "author": "modern-web",
+  "homepage": "https://github.com/modernweb-dev/web/tree/master/packages/rollup-plugin-copy",
+  "bugs": {
+    "url": "https://github.com/modernweb-dev/web/issues"
+  },
+  "main": "src/copy.js",
+  "module": "index.mjs",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./index.mjs",
+      "require": "./src/copy.js"
+    }
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "test": "mocha test/**/*.test.js --reporter dot",
+    "test:watch": "mocha test/**/*.test.js --watch --watch-files src,test --reporter dot",
+    "format": "npm run format:eslint && npm run format:prettier",
+    "format:eslint": "eslint --ext .ts,.js,.mjs,.cjs . --fix",
+    "format:prettier": "prettier \"**/*.{ts,js,mjs,cjs,md}\" \"**/package.json\" --write --ignore-path .eslintignore",
+    "lint": "npm run lint:eslint && npm run lint:prettier",
+    "lint:eslint": "eslint --ext .ts,.js,.mjs,.cjs .",
+    "lint:prettier": "prettier \"**/*.{ts,js,mjs,cjs,md}\" --check --ignore-path .eslintignore"
+  },
+  "files": [
+    "*.d.ts",
+    "*.js",
+    "*.mjs",
+    "dist",
+    "src"
+  ],
+  "keywords": [
+    "rollup",
+    "plugin",
+    "copy"
+  ],
+  "dependencies": {
+    "chai": "^4.4.0",
+    "glob": "^10.0.0"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.1.0",
+    "@typescript-eslint/eslint-plugin": "^6.18.1",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "mocha": "^10.2.0",
+    "prettier": "^3.1.1",
+    "rollup": "^4.9.4"
+  },
+  "types": "dist/copy.d.ts",
+  "prettier": {
+    "singleQuote": true,
+    "arrowParens": "avoid",
+    "printWidth": 100,
+    "trailingComma": "all"
+  },
+  "eslintConfig": {
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "eslint-config-prettier",
+      "plugin:@typescript-eslint/recommended"
+    ],
+    "env": {
+      "browser": true,
+      "node": true,
+      "mocha": true,
+      "es2020": true
+    },
+    "rules": {
+      "@typescript-eslint/no-non-null-assertion": "off",
+      "@typescript-eslint/explicit-module-boundary-types": "off",
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-empty-interface": "off",
+      "@typescript-eslint/no-unused-vars": "error",
+      "@typescript-eslint/no-var-requires": "off",
+      "@typescript-eslint/ban-ts-comment": "off"
+    }
+  }
+}
